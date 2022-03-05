@@ -1,6 +1,6 @@
 import re
 
-file_wordlist=open('wordlist.txt', 'r')
+file_wordlist=open('clean_wordlist.txt', 'r')
 lst_words=file_wordlist.read().splitlines()
 file_wordlist.close()
 
@@ -13,7 +13,7 @@ for word in lst_words:
 lst_words=lst_tmp_clean_words
 
 int_lst_words_length=len(lst_words)
-print("lst_words has " + str(int_lst_words_length))
+print("lst_words has " + str(int_lst_words_length) + " words.")
 
 lst_removed_dups=[]
 for word in lst_words:
@@ -39,15 +39,17 @@ for word in lst_words:
         # print("ok.")
         pass
 
+    if ("/" in word):
+        lst_words.remove(word)
+        print("Removing " + word + " because of junk character(s).")
+        continue  # go to the next iteration
+
     # add the word to a new list if it is greater than 4 letters
     if len(word) >= 4:
         if word not in lst_removed_dups:
             lst_removed_dups.append(word)
 
-    if("/" in word):
-        lst_words.remove(word)
-        print("Removing " + word + " because of junk character(s).")
-        continue  # go to the next iteration
+    # for word in lst_words
 
 print("Clean word list has " + str(len(lst_removed_dups)) + " words.")
 

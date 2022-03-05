@@ -1,11 +1,9 @@
 import re
 
-
 def sortkey(n):
     return len(n)
 
-
-file_words = open('new_clean_wordlist.txt', 'r')
+file_words = open('clean_wordlist.txt', 'r')
 
 lst_words = file_words.read().splitlines()
 file_words.close()
